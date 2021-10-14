@@ -4,6 +4,17 @@ public abstract class Persona {
 	private String nombre;
 	private String apellido;
 	private Integer dni;
+	private Genero genero;
+	
+	
+	
+
+	public Persona(String nombre, String apellido, Integer dni, Genero genero) {
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.dni = dni;
+		this.genero = genero;
+	}
 	
 	public String getNombre() {
 		return nombre;
@@ -24,4 +35,11 @@ public abstract class Persona {
 		this.dni = dni;
 	}
 
+	public Genero getGenero() {
+		return genero;
+	}
+	
+	public void setGenero(Genero genero) {
+		this.genero = genero;
+	}
 }
