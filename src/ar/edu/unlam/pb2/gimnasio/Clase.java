@@ -9,7 +9,7 @@ public abstract class Clase {
 	private TipoClase tipoClase;
 	private Salon salon;
 	
-	public void Persona(Salon salon, Profesor profesor) {
+	public Clase(Salon salon, Profesor profesor) {
 		this.setProfesorEncargado(profesor);
 		this.salon=salon;
 	}
@@ -18,7 +18,7 @@ public abstract class Clase {
 		return profesorEncargado;
 	}
 
-	public Persona[] getAlumnos() {
+	public Alumno[] getAlumnos() {
 		return alumnos;
 	}
 
@@ -57,7 +57,5 @@ public abstract class Clase {
 	public void setProfesorEncargado(Profesor profesorEncargado) {
 		this.profesorEncargado = profesorEncargado;
 	}
-	
-	
 
 }

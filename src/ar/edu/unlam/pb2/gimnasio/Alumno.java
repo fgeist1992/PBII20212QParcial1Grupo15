@@ -6,6 +6,9 @@ public class Alumno extends Persona{
 	private Double saldo=0.0;
 	private Integer clasesInscriptas=0;
 	private Integer CANTIDAD_CLASE_BRONCE=1;
+	private Double IMPORTE_ABONO_BRONCE=1000.0;
+	private Double IMPORTE_ABONO_PLATA=1800.0;
+	private Double IMPORTE_ABONO_ORO=2500.0;
 	private Integer CANTIDAD_CLASE_PLATA=2;
 	public Alumno(String nombre, String apellido, Integer dni, Genero genero, Abono tipoDeAbono) {
 		super(nombre, apellido, dni, genero);
@@ -33,7 +36,7 @@ public class Alumno extends Persona{
 	}
 	
 	public void sumarClase() {
-		if(this.validarClase()) {
+		if(this.validarClase() == true) {
 			this.clasesInscriptas++;
 		}
 	}
@@ -49,7 +52,19 @@ public class Alumno extends Persona{
 		}
 	   return validar;		
 	}
-	
-	
 
+	public void facturarMes() {
+		Double saldo=0.0;
+		switch(this.tipoDeAbono) {
+		case BRONCE:
+			saldo=IMPORTE_ABONO_BRONCE;
+			break;
+		case PLATA:
+			saldo=IMPORTE_ABONO_PLATA;
+			break;	
+		default:
+			saldo=IMPORTE_ABONO_ORO;			
+		}
+		this.setSaldo(saldo);
+	}
 }
