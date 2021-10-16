@@ -5,5 +5,6 @@ public abstract class Clase {
 	private Persona[] alumnos;
 	private Profesor profesorEncargado;
 	private Double importe;
+	private TipoClase tipoClase;
 
 }
