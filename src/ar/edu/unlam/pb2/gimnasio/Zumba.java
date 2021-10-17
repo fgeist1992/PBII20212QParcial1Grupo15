@@ -2,6 +2,7 @@ package ar.edu.unlam.pb2.gimnasio;
 
 public class Zumba extends Clase{
 	private Integer licenciaZumba;
+	
 	private Profesor profesorInvitado;
 	public Zumba(Salon salon, Profesor profesor, Integer licenciaZumba) {
 		super(salon, profesor);
@@ -9,7 +10,7 @@ public class Zumba extends Clase{
 	}
 	
 	public void comisionar() {
-		Integer cantidadAlumnos= this.getAlumnos().length;
+		Integer cantidadAlumnos= this.getCantidadAlumnos();
 		Double importePagadoAProfesor =(double) cantidadAlumnos * 200;
 		Double importePagadoAProfesorInvitado=(importePagadoAProfesor*0.1);
 		this.getProfesorEncargado().setImporteADepositar(importePagadoAProfesor);

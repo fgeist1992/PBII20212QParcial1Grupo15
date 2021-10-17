@@ -43,7 +43,7 @@ public class Alumno extends Persona{
 		}
 	}
 
-	private Boolean validarClase() {
+	public Boolean validarClase() {
 	Boolean validar=false;
 	   if(this.tipoDeAbono == Abono.BRONCE && this.clasesInscriptas < this.CANTIDAD_CLASE_BRONCE) {
 			validar=true;			

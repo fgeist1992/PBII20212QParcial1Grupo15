@@ -7,7 +7,7 @@ public abstract class Clase {
 	private Integer cantidadAlumnos=0;
 	private TipoClase tipoClase;
 	private Salon salon;
-	
+
 	public Clase(Salon salon, Profesor profesor) {
 		this.setProfesorEncargado(profesor);
 		this.salon=salon;
@@ -21,11 +21,17 @@ public abstract class Clase {
 		return alumnos;
 	}
 
+	/*
+	 * Se agrega un alumno a la clase
+	 * No se agrega si llegó al limite de clases según el tipo de abono 
+	 */
 	public void agregarAlumnos(Alumno alumno) {
 		if(this.cantidadAlumnos<alumnos.length) {
-			this.alumnos[cantidadAlumnos]=alumno;
-		    alumno.sumarClase();
-			this.cantidadAlumnos++;
+			if (alumno.validarClase()) {
+				this.alumnos[cantidadAlumnos]=alumno;
+				alumno.sumarClase();
+				this.cantidadAlumnos++;				
+			}
 		}
 	}
 
@@ -55,6 +61,10 @@ public abstract class Clase {
 
 	public void setProfesorEncargado(Profesor profesorEncargado) {
 		this.profesorEncargado = profesorEncargado;
+	}
+	
+	public Integer getCantidadAlumnos() {
+		return cantidadAlumnos;
 	}
 
 }
