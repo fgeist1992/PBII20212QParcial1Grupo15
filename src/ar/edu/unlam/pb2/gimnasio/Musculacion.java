@@ -1,9 +1,12 @@
 package ar.edu.unlam.pb2.gimnasio;
 
-public class Musculacion extends Clase{
+public class Musculacion extends Clase {
 
+	private final Double COMISION_POR_ALUMNO = 150.0;
+	
 	public Musculacion(Salon salon, Profesor profesor) {
 		super(salon, profesor);
+		this.setTipoClase(TipoClase.MUSCULACION);
 	}
 	
 	/*
@@ -27,6 +30,15 @@ public class Musculacion extends Clase{
 
 
 		return ganador;
+	}
+	
+	@Override
+	public Double comisionar() {
+		Integer cantidadAlumnos= this.getCantidadAlumnos();
+		Double importePagadoAProfesor = cantidadAlumnos * COMISION_POR_ALUMNO;
+		this.getProfesorEncargado().setImporteADepositar(importePagadoAProfesor);
+		
+		return importePagadoAProfesor;
 	}
 
 

@@ -1,6 +1,6 @@
 package ar.edu.unlam.pb2.gimnasio;
 
-public abstract class Clase {
+public abstract class Clase implements Comisionable{
 	private Alumno[] alumnos = new Alumno[20];
 	private Profesor profesorEncargado;
 	private Double importe;
