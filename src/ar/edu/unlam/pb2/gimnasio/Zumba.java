@@ -9,8 +9,8 @@ public class Zumba extends Clase{
 	}
 	
 	public void comisionar() {
-		Double cantidadAlumnos=(double) this.getAlumnos().length;
-		Double importePagadoAProfesor = cantidadAlumnos * 200;
+		Integer cantidadAlumnos= this.getAlumnos().length;
+		Double importePagadoAProfesor =(double) cantidadAlumnos * 200;
 		Double importePagadoAProfesorInvitado=(importePagadoAProfesor*0.1);
 		this.getProfesorEncargado().setImporteADepositar(importePagadoAProfesor);
 		if(profesorInvitado != null) {

@@ -36,6 +36,7 @@ public class Alumno extends Persona{
 	}
 	
 	public void sumarClase() {
+		/*PARA PODER SUMAR A UN CLASE, DEBEMOS VALIDAR QUE SU ABONO SE LO PERMITA*/
 		if(this.validarClase() == true) {
 			this.clasesInscriptas++;
 		}
@@ -54,6 +55,7 @@ public class Alumno extends Persona{
 	}
 
 	public void facturarMes() {
+		/*FACTURAMOS, SUMANDO A SU SALDO EL VALOR DEL ABONO CONTRATADO*/
 		Double saldo=0.0;
 		switch(this.tipoDeAbono) {
 		case BRONCE:

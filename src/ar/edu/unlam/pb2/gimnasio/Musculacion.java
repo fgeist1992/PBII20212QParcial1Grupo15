@@ -7,6 +7,7 @@ public class Musculacion extends Clase{
 	}
 	
 	public Alumno sortearMesGratis() {
+		/*METODO POR EL CUAL SE SORTEARA UN MES GRATIS, ENTRE LOS ALUMNOS QUE TENGAN SALDO 0*/
 		Alumno ganador=null;
 		Alumno [] alumnosClase= this.getAlumnos();
 		Integer cantidadDeAlumnos=alumnosClase.length;

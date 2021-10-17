@@ -1,7 +1,6 @@
 package ar.edu.unlam.pb2.gimnasio;
 
 public abstract class Clase {
-	/*los alumnos de la clase, pueden ser alumnos o profesores*/
 	private Alumno[] alumnos = new Alumno[20];
 	private Profesor profesorEncargado;
 	private Double importe;
