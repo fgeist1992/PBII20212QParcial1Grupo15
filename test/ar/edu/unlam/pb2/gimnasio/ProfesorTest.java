@@ -55,5 +55,16 @@ public class ProfesorTest {
 		
 		assertEquals(valorEsperado, valorObtenido);
 	}
+	
+	@Test
+	public void queSePuedanObtenerLaEspecialidadDelProfesor() {
+		Profesor profesor = new Profesor("Martin", "Fernandez", 10000000, Genero.MASCULINO, TipoClase.FUNCIONAL);
+		TipoClase valorEsperado = (TipoClase.FUNCIONAL);
+		TipoClase[] valorObtenido;
+		
+		valorObtenido = profesor.getEspecialidades();
+		
+		assertEquals(valorEsperado, valorObtenido[0]);
+	}
 
 }

@@ -133,5 +133,16 @@ public class ZumbaTest {
 		assertEquals(valorEsperadoProfesorInvitado, valorObtenidoProfesorInvitado);
 	}
 	
+	@Test
+	public void queSePuedaObtenerLicenciaDeZumbaRelacionaALaClase() {
+		claseDeZumba = new Zumba(Salon.B, profesor, licenciaZumba);
+		Integer valorEsperado = 111111111;
+		Integer valorObtenido;
+		
+		valorObtenido = claseDeZumba.getLicenciaZumba();
+
+		assertEquals(valorEsperado, valorObtenido);
+	}
+	
 
 }
