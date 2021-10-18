@@ -139,5 +139,50 @@ public class AlumnoTest {
 		
 		assertEquals(IMPORTE_ABONO_ORO, valorObtenido);
 	}
+	
+	@Test 
+	public void siSeCreaAlumnoConDatosErroneosSeCorrige() {
+		Alumno alumno = new Alumno("Martin", "Fernandez", 10000000, Genero.MASCULINO, Abono.ORO);
+		String valorEsperadoNombre = "Martino";
+		String valorEsperadoApellido = "Fernandes";
+		Integer valorEsperadoDNI = 10000001;
+		Genero valorEsperadoGenero = Genero.INDEFINIDO;
+		
+		alumno.setNombre("Martino");
+		alumno.setApellido("Fernandes");
+		alumno.setDni(10000001);
+		alumno.setGenero(Genero.INDEFINIDO);
+		
+		String valorObtenidoNombre = "Martino";
+		String valorObtenidoApellido = "Fernandes";
+		Integer valorObtenidoDNI = 10000001;
+		Genero valorObtenidoGenero = Genero.INDEFINIDO;
+
+
+		assertEquals(valorEsperadoNombre, valorObtenidoNombre);
+		assertEquals(valorEsperadoApellido, valorObtenidoApellido);
+		assertEquals(valorEsperadoDNI, valorObtenidoDNI);
+		assertEquals(valorEsperadoGenero, valorObtenidoGenero);
+	}
+	
+	@Test 
+	public void queSePuedaConsultarLosDatosDelAlumno() {
+		Alumno alumno = new Alumno("Martin", "Fernandez", 10000000, Genero.MASCULINO, Abono.ORO);
+		String valorEsperadoNombre = "Martin";
+		String valorEsperadoApellido = "Fernandez";
+		Integer valorEsperadoDNI = 10000000;
+		Genero valorEsperadoGenero = Genero.MASCULINO;
+				
+		String valorObtenidoNombre = alumno.getNombre();
+		String valorObtenidoApellido = alumno.getApellido();
+		Integer valorObtenidoDNI = alumno.getDni();
+		Genero valorObtenidoGenero = alumno.getGenero();
+
+
+		assertEquals(valorEsperadoNombre, valorObtenidoNombre);
+		assertEquals(valorEsperadoApellido, valorObtenidoApellido);
+		assertEquals(valorEsperadoDNI, valorObtenidoDNI);
+		assertEquals(valorEsperadoGenero, valorObtenidoGenero);
+	}
 
 }
