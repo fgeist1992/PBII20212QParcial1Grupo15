@@ -37,11 +37,17 @@ public class Gimnasio {
 	
 	/*
 	 * Se agrega un nuevo alumno al gimnasio
+	 * SE AGREGA VALIDACION POR DNI UNICO
 	 */
 	public Boolean agregarAlumno(Alumno nuevoAlumno) {
 		Boolean sePudoAgregar = Boolean.FALSE;
-		
-		if(this.cantidadDeAlumnos < CAPACIDAD_MAXIMA_DE_ALUMNOS) {
+		Boolean existe=false;
+		for(int i=0;i < this.cantidadDeAlumnos;i++) {
+			if(this.alumnos[i].getDni().equals(nuevoAlumno.getDni())) {
+				existe=true;
+			}
+		}
+		if(this.cantidadDeAlumnos < CAPACIDAD_MAXIMA_DE_ALUMNOS && existe==false) {
 			alumnos[cantidadDeAlumnos++] = nuevoAlumno;
 			sePudoAgregar = Boolean.TRUE;
 		}
@@ -55,7 +61,7 @@ public class Gimnasio {
 	public Boolean agregarProfesor(Profesor nuevoProfesor) {
 		Boolean sePudoAgregar = Boolean.FALSE;
 		
-		if(this.cantidadDeAlumnos < CAPACIDAD_MAXIMA_DE_PROFESORES) {
+		if(this.cantidadDeProfesores < CAPACIDAD_MAXIMA_DE_PROFESORES) {
 			profesores[cantidadDeProfesores++] = nuevoProfesor;
 			sePudoAgregar = Boolean.TRUE;
 		}
@@ -63,6 +69,23 @@ public class Gimnasio {
 		return sePudoAgregar;
 	}
 	
+	public Integer getCantidadDeAlumnos() {
+		return cantidadDeAlumnos;
+	}
+
+	public Integer getCantidadDeProfesores() {
+		return cantidadDeProfesores;
+	}
+
+
+	public Integer getCantidadDeClases() {
+		return cantidadDeClases;
+	}
+
+	public void setCantidadDeClases(Integer cantidadDeClases) {
+		this.cantidadDeClases = cantidadDeClases;
+	}
+
 	/*
 	 * Se agrega un nuevo tipo de clase al gimnasio de zumba
 	 * - Sólo se podrá agregar si existe un profesor especialista en la disciplina
@@ -125,7 +148,7 @@ public class Gimnasio {
 	}
 	
 	/*
-	 * Se agrega una nueva clase de Salsa al gimnasio
+	 * Se agrega una nueva clase de Funcional al gimnasio
 	 * - Sólo se podrá agregar si existe un profesor especialista en la disciplina
 	 */
 	public Boolean agergarClaseFuncional(Salon salon) {
