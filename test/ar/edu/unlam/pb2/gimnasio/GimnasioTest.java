@@ -62,7 +62,7 @@ public class GimnasioTest {
 	@Test
 	public void queSePuedanAgergarUnaClaseDeZumba() {	
 		gimnasio.agregarProfesor(profesor);//Sin profesor retorna FALSE; ya que en el gimansio no hay un profesor que sea instructor de zuma
-		Boolean valorObtenido = gimnasio.agergarClaseZumba(Salon.A, licenciaZumba);
+		Boolean valorObtenido = gimnasio.agergarClaseZumba(Salon.A, licenciaZumba,null);
 		Boolean valorEsperado= true;		
 		assertEquals(valorEsperado,valorObtenido);
 	}
@@ -77,7 +77,7 @@ public class GimnasioTest {
 	@Test
 	public void queSePuedanAgergarAlumnoAUnaClase() {	
 		gimnasio.agregarProfesor(profesor);
-		gimnasio.agergarClaseZumba(Salon.A, licenciaZumba);
+		gimnasio.agergarClaseZumba(Salon.A, licenciaZumba,null);
 		gimnasio.agregarAlumno(alumnoUno);//Si no se agrega esta linea, el alumno no puede agregarse a una clase, por no estar en el array alumnos del gimnasio.
 		/*SI SE AGREGA EL ALUMNO CUATRO, TAMPOCO SE EJECUTARA, YA QUE NO POSEE ABONO*/
 		/*SI INTENTO AGREGAR NUEVAMENTE A ALUMNO UNO, DA ERROR POR LIMITE DE ALCANCE DEL ABONO BRONCE*/
@@ -105,7 +105,7 @@ public class GimnasioTest {
 		gimnasio.agregarProfesor(profesorMusculacion);
 		gimnasio.agregarProfesor(profesor);
 		gimnasio.agergarClaseMusculacion(Salon.C);
-		gimnasio.agergarClaseZumba(Salon.A,121321213);
+		gimnasio.agergarClaseZumba(Salon.A,121321213,null);
 		gimnasio.agregarAlumno(TipoClase.MUSCULACION, 10000001);
 		gimnasio.agregarAlumno(TipoClase.MUSCULACION, 10000002);
 		gimnasio.agregarAlumno(TipoClase.MUSCULACION, 10000003);	
@@ -125,7 +125,7 @@ public class GimnasioTest {
 		gimnasio.agregarProfesor(profesorMusculacion);
 		gimnasio.agregarProfesor(profesor);
 		gimnasio.agergarClaseMusculacion(Salon.C);
-		gimnasio.agergarClaseZumba(Salon.A,121321213);
+		gimnasio.agergarClaseZumba(Salon.A,121321213,null);
 		gimnasio.agregarAlumno(TipoClase.MUSCULACION, 10000001);
 		gimnasio.agregarAlumno(TipoClase.MUSCULACION, 10000002);
 		gimnasio.agregarAlumno(TipoClase.MUSCULACION, 10000003);	
@@ -134,6 +134,48 @@ public class GimnasioTest {
 		gimnasio.pagarALosProfesores();
 		Double valorEsperado=200.0;		
 		Double valorObtenido = profesor.getImporteADepositar();
+		assertEquals(valorEsperado,valorObtenido);
+	}
+	@Test
+	public void queLuegoDeComisionarLaRecaudacionDescuenteLosSaldosDeLosProfesores() {	
+		gimnasio.agregarAlumno(alumnoUno);
+		gimnasio.agregarAlumno(alumnoDos);
+		gimnasio.agregarAlumno(alumnoTres);
+		Profesor profesorMusculacion= new Profesor("Arnold","Perez",123456,Genero.MASCULINO, TipoClase.MUSCULACION);
+		gimnasio.agregarProfesor(profesorMusculacion);
+		gimnasio.agregarProfesor(profesor);
+		gimnasio.agergarClaseMusculacion(Salon.C);
+		gimnasio.agergarClaseZumba(Salon.A,121321213,null);
+		gimnasio.agregarAlumno(TipoClase.MUSCULACION, 10000001);//1000
+		gimnasio.agregarAlumno(TipoClase.MUSCULACION, 10000002);//1800
+		gimnasio.agregarAlumno(TipoClase.MUSCULACION, 10000003);//2500	
+		gimnasio.agregarAlumno(TipoClase.ZUMBA, 10000002);
+		gimnasio.obtenerRecaudacion();// 5.300
+		gimnasio.pagarALosProfesores();// -450 de musculacion - 200 de zumba = -650
+		Double valorEsperado=4650.0;		
+		Double valorObtenido = gimnasio.getRecaudacionActual();
+		assertEquals(valorEsperado,valorObtenido);
+	}
+	
+	@Test
+	public void queLuegoDeComisionarLaRecaudacionDescuenteLosSaldosDeLosProfesoresIncluyendoUnProfesorInvitadoEnZumba() {	
+		gimnasio.agregarAlumno(alumnoUno);
+		gimnasio.agregarAlumno(alumnoDos);
+		gimnasio.agregarAlumno(alumnoTres);
+		Profesor profesorMusculacion= new Profesor("Arnold","Perez",123456,Genero.MASCULINO, TipoClase.MUSCULACION);
+		Profesor profesorInvitado= new Profesor("Zin","Lopez",1233456,Genero.MASCULINO, TipoClase.ZUMBA);
+		gimnasio.agregarProfesor(profesorMusculacion);
+		gimnasio.agregarProfesor(profesor);
+		gimnasio.agergarClaseMusculacion(Salon.C);
+		gimnasio.agergarClaseZumba(Salon.A,121321213,profesorInvitado);
+		gimnasio.agregarAlumno(TipoClase.MUSCULACION, 10000001);//1000
+		gimnasio.agregarAlumno(TipoClase.MUSCULACION, 10000002);//1800
+		gimnasio.agregarAlumno(TipoClase.MUSCULACION, 10000003);//2500	
+		gimnasio.agregarAlumno(TipoClase.ZUMBA, 10000002);
+		gimnasio.obtenerRecaudacion();// 5.300
+		gimnasio.pagarALosProfesores();// -450 de musculacion - 200 de zumba = -650
+		Double valorEsperado=4630.0; /// profesorInvitado se lleva un 10% de lo recaudado por zumba , -20		
+		Double valorObtenido = gimnasio.getRecaudacionActual();
 		assertEquals(valorEsperado,valorObtenido);
 	}
 	

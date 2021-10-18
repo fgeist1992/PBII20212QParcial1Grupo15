@@ -30,14 +30,14 @@ public class ZumbaTest {
 	
 	@Test
 	public void queSePuedaCrearUnaClaseDeZumba() {
-		claseDeZumba = new Zumba(Salon.B, profesor, licenciaZumba);
+		claseDeZumba = new Zumba(Salon.B, profesor, licenciaZumba, null);
 		
 		assertNotNull(claseDeZumba);
 	}
 	
 	@Test 
 	public void queSePuedaAgregarUnProfesorInvitado() {
-		claseDeZumba = new Zumba(Salon.B, profesor, licenciaZumba);
+		claseDeZumba = new Zumba(Salon.B, profesor, licenciaZumba,null);
 		Profesor valorEsperado = profesorInvitado;
 		Profesor valorObtenido;
 		
@@ -50,7 +50,7 @@ public class ZumbaTest {
 	
 	@Test
 	public void queSePuedaAgregarUnAlumno() {
-		claseDeZumba = new Zumba(Salon.B, profesor, licenciaZumba);
+		claseDeZumba = new Zumba(Salon.B, profesor, licenciaZumba,null);
 		Integer valorEsperado = 1;
 		Integer valorObtenido;
 		
@@ -63,7 +63,7 @@ public class ZumbaTest {
 	
 	@Test
 	public void queSePuedaAgregarVariosAlumnos() {
-		claseDeZumba = new Zumba(Salon.B, profesor, licenciaZumba);
+		claseDeZumba = new Zumba(Salon.B, profesor, licenciaZumba,null);
 		Integer valorEsperado = 3;
 		Integer valorObtenido;
 		
@@ -79,7 +79,7 @@ public class ZumbaTest {
 	
 	@Test
 	public void queNoSePuedaAgregarAlumnosSiLaClaseEstaLlena() {
-		claseDeZumba = new Zumba(Salon.B, profesor, licenciaZumba);
+		claseDeZumba = new Zumba(Salon.B, profesor, licenciaZumba,null);
 		Integer valorEsperado = 20;
 		Integer valorObtenido;
 		
@@ -96,7 +96,7 @@ public class ZumbaTest {
 	
 	@Test
 	public void queSeDepositeLaComisionEnElProfesorEncargadoDeLaClase() {
-		claseDeZumba = new Zumba(Salon.B, profesor, licenciaZumba);
+		claseDeZumba = new Zumba(Salon.B, profesor, licenciaZumba,null);
 		Double valorEsperado = 200.0 * 3.0; // Se supone que hay 3 alumnos inscriptos. El cuarto no tiene abono
 		Double valorObtenido;
 		
@@ -113,7 +113,7 @@ public class ZumbaTest {
 	
 	@Test
 	public void queSeDepositeLaComisionEnElProfesorEncargadoDeLaClaseYEnElProfesorInvitado() {
-		claseDeZumba = new Zumba(Salon.B, profesor, licenciaZumba);
+		claseDeZumba = new Zumba(Salon.B, profesor, licenciaZumba,null);
 		Double valorEsperadoProfesor = 200.0 * 3.0; // Se supone que hay 3 alumnos inscriptos. El cuarto no tiene abono
 		Double valorObtenidoProfesor;
 		Double valorEsperadoProfesorInvitado = 200.0 * 3.0 * 0.1; // El invitado se lleva un 10%

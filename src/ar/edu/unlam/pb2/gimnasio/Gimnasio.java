@@ -90,12 +90,12 @@ public class Gimnasio {
 	 * Se agrega un nuevo tipo de clase al gimnasio de zumba
 	 * - Sólo se podrá agregar si existe un profesor especialista en la disciplina
 	 */
-	public Boolean agergarClaseZumba(Salon salon, Integer licenciaZumba) {
+	public Boolean agergarClaseZumba(Salon salon, Integer licenciaZumba, Profesor profesorInvitado) {
 		Boolean sePudoAgregar = Boolean.FALSE;
 		TipoClase tipoDeClase = TipoClase.ZUMBA;
 		Profesor profesorACargoDeLaClase = this.buscarEspecialista(tipoDeClase);
 		
-		Zumba nuevaClaseDeZumba = new Zumba(salon, profesorACargoDeLaClase, licenciaZumba);
+		Zumba nuevaClaseDeZumba = new Zumba(salon, profesorACargoDeLaClase, licenciaZumba, profesorInvitado);
 		
 		if(this.cantidadDeClases < CANTIDAD_MAXIMA_DE_CLASES && profesorACargoDeLaClase != null) {
 			clasesDisponibles[cantidadDeClases++] = nuevaClaseDeZumba;
