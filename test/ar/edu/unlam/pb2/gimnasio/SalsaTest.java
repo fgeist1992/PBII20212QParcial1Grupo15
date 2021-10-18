@@ -30,6 +30,26 @@ public class SalsaTest {
 	}
 	
 	@Test
+	public void queSePuedaObtenerElSalonDeSalsa() {
+		claseDeSalsa = new Salsa(Salon.B, profesor);
+		Salon valorEsperado = Salon.B;
+		Salon valorObtenido = claseDeSalsa.getSalon();
+		
+		assertEquals(valorEsperado, valorObtenido);
+	}
+	
+	@Test
+	public void queSePuedaCambiarElSalonDeSalsaPorOtroSalon() {
+		claseDeSalsa = new Salsa(Salon.B, profesor);
+		claseDeSalsa.setSalon(Salon.C);
+		
+		Salon valorEsperado = Salon.C;
+		Salon valorObtenido = claseDeSalsa.getSalon();
+		
+		assertEquals(valorEsperado, valorObtenido);
+	}
+	
+	@Test
 	public void queSePuedaAgregarUnAlumnoAlaClaseDeSalsa() {
 		claseDeSalsa = new Salsa(Salon.B, profesor);
 		Integer valorEsperado = 1;

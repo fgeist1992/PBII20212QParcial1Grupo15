@@ -3,7 +3,6 @@ package ar.edu.unlam.pb2.gimnasio;
 public abstract class Clase implements Comisionable{
 	private Alumno[] alumnos = new Alumno[20];
 	private Profesor profesorEncargado;
-	private Double importe;
 	private Integer cantidadAlumnos=0;
 	private TipoClase tipoClase;
 	private Salon salon;
@@ -33,14 +32,6 @@ public abstract class Clase implements Comisionable{
 				this.cantidadAlumnos++;				
 			}
 		}
-	}
-
-	public Double getImporte() {
-		return importe;
-	}
-
-	public void setImporte(Double importe) {
-		this.importe = importe;
 	}
 
 	public TipoClase getTipoClase() {
