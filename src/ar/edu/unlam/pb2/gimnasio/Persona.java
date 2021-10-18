@@ -6,8 +6,6 @@ public abstract class Persona {
 	private Integer dni;
 	private Genero genero;
 	
-	
-	
 
 	public Persona(String nombre, String apellido, Integer dni, Genero genero) {
 		this.nombre = nombre;
