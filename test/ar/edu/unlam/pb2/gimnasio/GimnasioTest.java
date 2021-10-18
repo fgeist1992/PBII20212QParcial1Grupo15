@@ -32,6 +32,26 @@ public class GimnasioTest {
 	public void queSePuedaCrearUnGimnasio() {
 		assertNotNull(gimnasio);
 	}
+	
+	@Test
+	public void queSePuedaObtenerLaCantidadTotalDeAlumnosDelGimnasio() {
+		gimnasio.agregarAlumno(alumnoUno);
+		Integer valorObtenido = 1;
+		Integer valorEsperado = gimnasio.getCantidadDeAlumnos();		
+		assertEquals(valorEsperado,valorObtenido);
+	}
+	
+	@Test
+	public void queSePuedaObtenerLaCantidadDeClasesTotalesDelGimnasio() {
+		gimnasio.agregarProfesor(profesor);//Sin profesor retorna FALSE; ya que en el gimansio no hay un profesor que sea instructor de zuma
+		gimnasio.agergarClaseZumba(Salon.A, licenciaZumba,null);
+		gimnasio.agregarAlumno(alumnoUno);
+		
+		Integer valorEsperado = 1;
+		Integer valorObtenido = gimnasio.getCantidadDeClases();		
+		assertEquals(valorEsperado,valorObtenido);
+	}
+	
 	@Test
 	public void queSePuedaAgergarUnAlumno() {	
 		//SI SE EJECUTA DOS VECES EL MIMSO DNI, DA ERROR YA QUE SERA TOMARO COMO UNIQUE EN EL PROCESO
@@ -40,6 +60,17 @@ public class GimnasioTest {
 		Boolean valorEsperado= true;		
 		assertEquals(valorEsperado,valorObtenido);
 	}
+	
+	@Test
+	public void noSePuedeAgregarAlumnoPorqueElAlumnoYaSeEncuentraRegistrado() {	
+		Alumno alumnoTest = new Alumno("Manuel", "Fernandez", 10000001, Genero.MASCULINO, Abono.BRONCE);
+		gimnasio.agregarAlumno(alumnoUno);
+		
+		Boolean valorObtenido = gimnasio.agregarAlumno(alumnoTest);
+		Boolean valorEsperado = false;		
+		assertEquals(valorEsperado,valorObtenido);
+	}
+	
 	//COMENTAMOS ESTE TEST, YA QUE SE REALIZO A MODO DE DEBUG, SIN TENER EN CUENTA LA RESTRICCION DEL DNI DEL ALUMNO COMO UNIQUE
 	/*@Test
 	public void queSePuedanAgergarSoloMilAlumnos() {	
@@ -66,6 +97,41 @@ public class GimnasioTest {
 		Boolean valorEsperado= true;		
 		assertEquals(valorEsperado,valorObtenido);
 	}
+	
+	@Test
+	public void queSePuedanAgregarUnaClaseDeSalsa() {	
+		gimnasio.agregarProfesor(profesor);
+		profesor.setEspecialidades(TipoClase.SALSA);
+		Boolean valorObtenido = gimnasio.agergarClaseSalsa(Salon.C);
+		Boolean valorEsperado= true;		
+		assertEquals(valorEsperado,valorObtenido);
+	}
+	
+	@Test
+	public void noSePuedanAgregarUnaClaseDeSalsaPorqueNoHayProfesorEncargado() {	
+		gimnasio.agregarProfesor(profesor);
+		Boolean valorObtenido = gimnasio.agergarClaseSalsa(Salon.D);
+		Boolean valorEsperado= false;		
+		assertEquals(valorEsperado,valorObtenido);
+	}
+	
+	@Test
+	public void queSePuedanAgregarUnaClaseDeFuncional() {	
+		gimnasio.agregarProfesor(profesor);
+		profesor.setEspecialidades(TipoClase.FUNCIONAL);
+		Boolean valorObtenido = gimnasio.agergarClaseFuncional(Salon.C);
+		Boolean valorEsperado= true;		
+		assertEquals(valorEsperado,valorObtenido);
+	}
+	
+	@Test
+	public void noSePuedanAgregarUnaClaseDeFuncionalPorqueNoHayProfesorEncargado() {	
+		gimnasio.agregarProfesor(profesor);
+		Boolean valorObtenido = gimnasio.agergarClaseFuncional(Salon.C);
+		Boolean valorEsperado= false;		
+		assertEquals(valorEsperado,valorObtenido);
+	}
+	
 	@Test
 	public void queSePuedanAgergarUnaClaseDeMusculacion() {	
 		Profesor profesorMusculacion= new Profesor("Arnold","Perez",123456,Genero.MASCULINO, TipoClase.MUSCULACION);

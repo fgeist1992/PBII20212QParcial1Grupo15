@@ -82,10 +82,6 @@ public class Gimnasio {
 		return cantidadDeClases;
 	}
 
-	public void setCantidadDeClases(Integer cantidadDeClases) {
-		this.cantidadDeClases = cantidadDeClases;
-	}
-
 	/*
 	 * Se agrega un nuevo tipo de clase al gimnasio de zumba
 	 * - Sólo se podrá agregar si existe un profesor especialista en la disciplina
