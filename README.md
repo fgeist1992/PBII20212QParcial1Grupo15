@@ -30,7 +30,7 @@ Consignas para la resolución del parcial
 
  Condiciones de aprobación:
  
-a. La entrega debe completarse antes del viernes 08-oct 19:00 hs.
+a. La entrega debe completarse antes del lunes 18-oct 23:00 hs.
 
 b. El código tiene que cumplir con los estándares de programación planteados desde el inicio de la cursada.
 
